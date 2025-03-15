@@ -1,0 +1,10 @@
+{
+    "tailwindCSS.includePath": ["./**/*.{js,ts,jsx,tsx}", "./src/app/*.{css,scss}", "./tailwind.config.js"],
+    "tailwindCSS.validate": true,
+    "editor.quickSuggestions": {
+      "strings": true
+    },
+    "css.validate": false,
+    "tailwindCSS.emmetCompletions": true
+  }
+  
