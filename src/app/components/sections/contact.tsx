@@ -36,15 +36,15 @@ const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSel
     } else if (selectedOption === 'devis') {
       const subject = `Demande de devis - ${formData.websiteType}`;
       mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=Entreprise: ${formData.companyName}%0AEmail: ${formData.email}%0AProjet: ${formData.message}`;
-    
-    
-    
     } else if (selectedOption === 'rendezvous') {
       mailtoLink = `mailto:${recipientEmail}?subject=Prise de rendez-vous&body=Nom: ${formData.name}%0AEmail: ${formData.email}%0ATéléphone: ${formData.phone}%0AType de rendez-vous: ${formData.appointmentType}`;
     }
 
+
     window.location.href = mailtoLink;
   };
+
+  const yourPhoneNumber = '+33608550209'; 
 
   return (
     <section ref={setSectionRef(4)} className="text-center max-w-md mx-auto min-h-screen flex flex-col justify-center p-10">
@@ -138,7 +138,7 @@ const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSel
         </form>
       )}
 
-      {selectedOption === 'rendezvous' && (
+{selectedOption === 'rendezvous' && (
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -176,9 +176,15 @@ const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSel
             <option value="phone">Appel téléphonique</option>
             <option value="visio">Visioconférence</option>
           </select>
+          
           <CustomButton type="submit" text="Prendre rendez-vous" darkMode={false} />
         </form>
       )}
+      {formData.appointmentType === 'phone' && (
+            <a href={`tel:${yourPhoneNumber}`} className="mt-4 inline-block">
+              <CustomButton type="button" text="Appeler maintenant" darkMode={false} />
+            </a>
+          )}
     </section>
   );
 };
