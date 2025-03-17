@@ -1,6 +1,6 @@
-// src/app/components/sections/PresentationSection.tsx
 import React from 'react';
 import Image from 'next/image';
+import LinkButton from '../LinkButton';
 
 interface InfoProps {
   scrollToWork: () => void;
@@ -41,33 +41,28 @@ const Info: React.FC<InfoProps> = ({ scrollToWork , setSectionRef}) => {
                 <a onClick={scrollToWork}>Découvrez mon dernier projet!</a><br />
                 et vous pouvez retrouver mon parcours sur ces liens:.
               </p>
-              <div className="flex gap-4">
-                <a
+              <div className="icons flex gap-4">
+                
+                <LinkButton
                   href="https://www.linkedin.com/in/florian-d-a4ba7313b/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-teal text-white hover:bg-white hover:text-teal border border-teal transition"
-                >
-                  LinkedIn
-                </a>
+                  iconClass='fab fa-linkedin'
+                  ariaLabel='Linkedin'
+                  text='LinkedIn'
+                />
 
-                <a
+                <LinkButton
                   href="https://github.com/Florian-Denis-Dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-teal text-white hover:bg-white hover:text-teal border border-teal transition"
-                >
-                  GitHub
-                </a>
-
-                <a
+                  iconClass='fab fa-github'
+                  ariaLabel='GitHub'
+                  text='GitHub'
+                  />
+           
+                <LinkButton
                   href="https://www.instagram.com/florian.denis.dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-teal text-white hover:bg-white hover:text-teal border border-teal transition"
-                >
-                  Instagram
-                </a>
+                  iconClass='fab fa-instagram'
+                  ariaLabel='Instagram'
+                  text="Instagram"
+                />
               </div>
             </div>
           </article>
