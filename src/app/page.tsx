@@ -13,8 +13,10 @@ export default function NobilisWeb() {
   const [darkMode, setDarkMode] = useState(false);
   const { showHeader, showFooter, setSectionRef, sectionsRef } = useScroll();
   const [selectedOption, setSelectedOption] = useState("contact");
+  const [preselectedWebsiteType, setPreselectedWebsiteType] = useState<string | undefined>(undefined);
 
-  const scrollToDevis = useCallback(() => {
+  const scrollToDevis = useCallback((type: string) => {
+    setPreselectedWebsiteType(type);
     setSelectedOption("devis");
     setTimeout(() => {
       document.getElementById("devis")?.scrollIntoView({ behavior: "smooth" });
@@ -55,10 +57,10 @@ export default function NobilisWeb() {
         <Work setSectionRef={setSectionRef} sectionsRef={sectionsRef} />
 
         {/* Section Tarifs */}
-        <Tarif scrollToDevis={scrollToDevis} setSectionRef={setSectionRef} />
+        <Tarif scrollToDevis={scrollToDevis} setSectionRef={setSectionRef}  />
 
         {/* Section Contact */}
-        <Contact setSectionRef={setSectionRef} selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+        <Contact setSectionRef={setSectionRef} selectedOption={selectedOption} setSelectedOption={setSelectedOption}  preselectedWebsiteType={preselectedWebsiteType} />
       </main>
       <footer className={`fixed bottom-0 left-0 w-full text-center p-4 bg-opacity-20 transition-transform ${showFooter ? 'translate-y-0' : 'translate-y-full'}`}>
         © 2025 Nobilis Web - Tous droits réservés

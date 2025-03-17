@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CustomButton from '../CustomButton';
 
 interface ContactProps {
   setSectionRef: (index: number) => (el: HTMLElement | null) => void;
   selectedOption: string;
   setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
+  preselectedWebsiteType?: string; 
 }
 
-const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSelectedOption }) => {
+const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSelectedOption, preselectedWebsiteType }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,8 +16,17 @@ const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSel
     companyName: '',
     phone: '',
     appointmentType: 'phone',
-    websiteType: '',
+    websiteType: preselectedWebsiteType || '',
   });
+
+  useEffect(() => {
+    if (preselectedWebsiteType) {
+      setFormData((prevData) => ({
+        ...prevData,
+        websiteType: preselectedWebsiteType,
+      }));
+    }
+  }, [preselectedWebsiteType]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -29,7 +39,7 @@ const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSel
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     let mailtoLink = '';
-    const recipientEmail = 'floriandenisfdpro@gmail.com'; // Remplacez par votre adresse email
+    const recipientEmail = 'floriandenisfdpro@gmail.com';
 
     if (selectedOption === 'contact') {
       mailtoLink = `mailto:${recipientEmail}?subject=Premier contact&body=Nom: ${formData.name}%0AEmail: ${formData.email}%0AMessage: ${formData.message}`;
@@ -119,10 +129,10 @@ const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSel
             onChange={handleChange}
             required
           >
-            <option value="">Sélectionnez le type de site</option>
-            <option value="site vitrine">Site Vitrine</option>
-            <option value="e-commerce">E-commerce</option>
-            <option value="e-commerce et gestion">E-commerce et Gestion</option>
+          <option value="">Sélectionnez le type de site</option>
+            <option value="Site Vitrine">Site Vitrine</option>
+            <option value="E-commerce">E-commerce</option>
+            <option value="E-commerce et Gestion">E-commerce et Gestion</option>
           </select>
           <textarea
             name="message"
