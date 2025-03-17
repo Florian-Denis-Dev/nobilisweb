@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @font-face {
   font-family: 'Constantia';
   src: url('/fonts/Constantia.woff2') format('woff2');
@@ -174,7 +175,13 @@ body {
 
 
 
-/*-----*/
+/*--LinkButton---*/
+:root {
+  --color-light-primary: #028090; 
+  --color-light-secondary: #028090; 
+  --color-dark-primary: #00a896; 
+  --color-dark-secondary: #00a896; 
+}
 
 .icons {
   display: inline-flex;
@@ -239,56 +246,6 @@ body {
   transform: translate(20px, -20px);
 }
 
-.icons a:nth-child(1) .layer span,
-.icons a:nth-child(1) .text {
-  color: #FFD700; /* Remplacez par la couleur souhaitée */
-  border-color: #FFD700;
-}
-
-.icons a:nth-child(2) .layer span,
-.icons a:nth-child(2) .text {
-  color: #008080; /* Remplacez par la couleur souhaitée */
-  border-color: #008080;
-}
-
-.icons a:nth-child(3) .layer span,
-.icons a:nth-child(3) .text {
-  color: #FFD700; /* Remplacez par la couleur souhaitée */
-  border-color: #FFD700;
-}
-
-.icons a:nth-child(4) .layer span,
-.icons a:nth-child(4) .text {
-  color: #2867B2; /* Remplacez par la couleur souhaitée */
-  border-color: #2867B2;
-}
-
-.icons a:nth-child(5) .layer span,
-.icons a:nth-child(5) .text {
-  color: #FF0000; /* Remplacez par la couleur souhaitée */
-  border-color: #FF0000;
-}
-
-.icons a:hover:nth-child(1) .layer span {
-  box-shadow: -1px 1px 3px #FFD700;
-}
-
-.icons a:hover:nth-child(2) .layer span {
-  box-shadow: -1px 1px 3px #008080;
-}
-
-.icons a:hover:nth-child(3) .layer span {
-  box-shadow: -1px 1px 3px #FFD700;
-}
-
-.icons a:hover:nth-child(4) .layer span {
-  box-shadow: -1px 1px 3px #2867B2;
-}
-
-.icons a:hover:nth-child(5) .layer span {
-  box-shadow: -1px 1px 3px #FF0000;
-}
-
 .icons a .text {
   position: absolute;
   left: 50%;
@@ -302,4 +259,26 @@ body {
 .icons a:hover .text {
   bottom: -35px;
   opacity: 1;
+}
+
+/* Classes pour le mode clair */
+.icons a.light-mode .layer span,
+.icons a.light-mode .text {
+  color: var(--color-light-primary);
+  border-color: var(--color-light-primary);
+}
+
+.icons a.light-mode:hover .layer span {
+  box-shadow: -1px 1px 3px var(--color-light-secondary);
+}
+
+/* Classes pour le mode sombre */
+.icons a.dark-mode .layer span,
+.icons a.dark-mode .text {
+  color: var(--color-dark-primary);
+  border-color: var(--color-dark-primary);
+}
+
+.icons a.dark-mode:hover .layer span {
+  box-shadow: -1px 1px 3px var(--color-dark-secondary);
 }

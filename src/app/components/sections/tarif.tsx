@@ -1,11 +1,12 @@
 import React from "react"
-import CustomButton from "../CustomButton"
+import CustomButton from "../buttons/CustomButton"
 
 interface TarifProps {
     scrollToDevis: (type: string) => void;
     setSectionRef: (index:number) => (el:HTMLElement | null) => void
+    darkMode: boolean
 }
-const Tarif : React.FC<TarifProps> = ({scrollToDevis, setSectionRef, }) => {
+const Tarif : React.FC<TarifProps> = ({scrollToDevis, setSectionRef, darkMode}) => {
 return(
     <section ref={setSectionRef(3)} className="p-10 text-center min-h-screen flex flex-col justify-center">
             <h3 className="text-3xl font-bold mb-4">services et tarifs</h3>
@@ -26,7 +27,7 @@ return(
                         <p className='text-start'>
                         Abonnement : à partir de 50€/mois (maintenance, hébergement, mises à jour)
                         </p>
-                      <CustomButton text={"📩 Demander un devis"} darkMode={false} onClick={() => scrollToDevis('Site Vitrine')} />
+                      <CustomButton  text={"📩 Demander un devis"} darkMode={darkMode} onClick={() => scrollToDevis('Site Vitrine')} />
                       </li>
                       <li className='backdrop-blur-sm text-2xl flex flex-col justify-between p-4 shadow-lg rounded-xl min-w-[90%] xs:min-w-[85%] '>
                         <h4 className='text-2xl font-bold pb-4'>E-commerce</h4>
@@ -42,7 +43,7 @@ return(
                         <p className='text-start'>
                         Abonnement : à partir de 100€/mois (maintenance, hébergement, mises à jour, support technique)
                         </p>
-                        <CustomButton text={"📩 Demander un devis"} darkMode={false} onClick={() => scrollToDevis('E-commerce')} />
+                        <CustomButton text={"📩 Demander un devis"} darkMode={darkMode} onClick={() => scrollToDevis('E-commerce')} />
                         </li>
                       <li className='backdrop-blur-sm text-2xl flex flex-col justify-between p-4 shadow-lg rounded-xl min-w-[90%] xs:min-w-[85%] '>
                         <h4 className='text-2xl font-bold pb-4'> E-commerce et gestion</h4>
@@ -58,7 +59,7 @@ return(
                         <p className='text-start'>
                         Abonnement : à partir de 150€/mois (maintenance, hébergement, mises à jour, support avancé, optimisation continue)
                         </p>
-                        <CustomButton text={"📩 Demander un devis"} darkMode={false} onClick={() => scrollToDevis('E-commerce et Gestion')} />
+                        <CustomButton text={"📩 Demander un devis"} darkMode={darkMode} onClick={() => scrollToDevis('E-commerce et Gestion')} />
                         </li>
                     </ul>
                   </div>

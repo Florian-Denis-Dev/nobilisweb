@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useCallback } from 'react';
 import Image from 'next/image';
-import CustomButton from './components/CustomButton';
+import CustomButton from './components/buttons/CustomButton';
 import useScroll from './hooks/useScroll';
 import Hero from './components/sections/hero';
 import Info from './components/sections/info';
@@ -51,16 +51,16 @@ export default function NobilisWeb() {
         <Hero darkMode={darkMode} setSectionRef={setSectionRef} sectionsRef={sectionsRef} />
 
         {/* Section Info */}
-        <Info scrollToWork={scrollToWork} setSectionRef={setSectionRef} />
+        <Info scrollToWork={scrollToWork} setSectionRef={setSectionRef} darkMode={darkMode}/>
 
         {/* Section Work */}
-        <Work setSectionRef={setSectionRef} sectionsRef={sectionsRef} />
+        <Work setSectionRef={setSectionRef} sectionsRef={sectionsRef}  darkMode={darkMode} />
 
         {/* Section Tarifs */}
-        <Tarif scrollToDevis={scrollToDevis} setSectionRef={setSectionRef}  />
+        <Tarif scrollToDevis={scrollToDevis} setSectionRef={setSectionRef} darkMode={darkMode} />
 
         {/* Section Contact */}
-        <Contact setSectionRef={setSectionRef} selectedOption={selectedOption} setSelectedOption={setSelectedOption}  preselectedWebsiteType={preselectedWebsiteType} />
+        <Contact setSectionRef={setSectionRef} selectedOption={selectedOption} setSelectedOption={setSelectedOption}  preselectedWebsiteType={preselectedWebsiteType} darkMode={darkMode} />
       </main>
       <footer className={`fixed bottom-0 left-0 w-full text-center p-4 bg-opacity-20 transition-transform ${showFooter ? 'translate-y-0' : 'translate-y-full'}`}>
         © 2025 Nobilis Web - Tous droits réservés

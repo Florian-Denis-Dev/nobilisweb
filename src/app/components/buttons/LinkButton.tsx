@@ -5,15 +5,16 @@ interface LinkButtonProps{
     iconClass: string;
     text: string;
     ariaLabel: string;
+    darkMode: boolean;
 }
-const LinkButton : React.FC<LinkButtonProps> = ({ href, iconClass, text, ariaLabel }) => {
+const LinkButton : React.FC<LinkButtonProps> = ({ href, iconClass, text, ariaLabel, darkMode }) => {
     const [isHovered, setIsHovered] = useState(false);
   return(
     <a href={href}
     onMouseEnter={() => setIsHovered(true)}
     onMouseLeave={() => setIsHovered(false)}
     aria-label={ariaLabel}
-    className={`link-button ${isHovered ? 'hovered' : ''}`}
+    className={`link-button ${isHovered ? 'hovered' : ''} ${darkMode ? 'dark-mode' : 'light-mode'}`}
     >
 <div className="layer">
     <span></span>

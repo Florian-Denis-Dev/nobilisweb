@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import CustomButton from '../CustomButton';
+import CustomButton from '../buttons/CustomButton';
 
 interface ContactProps {
   setSectionRef: (index: number) => (el: HTMLElement | null) => void;
   selectedOption: string;
   setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
   preselectedWebsiteType?: string; 
+  darkMode: boolean
 }
 
-const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSelectedOption, preselectedWebsiteType }) => {
+const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSelectedOption, preselectedWebsiteType, darkMode }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -98,7 +99,7 @@ const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSel
             onChange={handleChange}
             required
           ></textarea>
-          <CustomButton type="submit" text="Envoyer" darkMode={false} />
+          <CustomButton type="submit" text="Envoyer" darkMode={darkMode} />
         </form>
       )}
 
@@ -144,7 +145,7 @@ const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSel
             required
           ></textarea>
            
-          <CustomButton type="submit" text="Demander un devis" darkMode={false} />
+          <CustomButton type="submit" text="Demander un devis" darkMode={darkMode} />
         </form>
       )}
 
@@ -187,12 +188,12 @@ const Contact: React.FC<ContactProps> = ({ setSectionRef, selectedOption, setSel
             <option value="visio">Visioconférence</option>
           </select>
           
-          <CustomButton type="submit" text="Prendre rendez-vous" darkMode={false} />
+          <CustomButton type="submit" text="Prendre rendez-vous" darkMode={darkMode} />
         </form>
       )}
       {formData.appointmentType === 'phone' && (
             <a href={`tel:${yourPhoneNumber}`} className="mt-4 inline-block">
-              <CustomButton type="button" text="Appeler maintenant" darkMode={false} />
+              <CustomButton type="button" text="Appeler maintenant" darkMode={darkMode} />
             </a>
           )}
     </section>

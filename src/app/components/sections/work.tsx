@@ -1,12 +1,13 @@
 import React from "react"
 import Image from "next/image"
-import CustomButton from "../CustomButton";
+import CustomButton from "../buttons/CustomButton";
 
 interface WorkProps {
-    setSectionRef : (index:number) => (el: HTMLElement | null) => void;
+  setSectionRef : (index:number) => (el: HTMLElement | null) => void;
   sectionsRef: React.RefObject<(HTMLElement | null)[]>;
+  darkMode: boolean
 }
-const Work : React.FC<WorkProps> = ({  setSectionRef, sectionsRef}) => {
+const Work : React.FC<WorkProps> = ({  setSectionRef, sectionsRef, darkMode}) => {
     return(
         <section ref={setSectionRef(2)} id="work" className="p-10 text-center min-h-screen flex flex-col justify-center items-center">
             <h3 className="text-3xl font-bold mb-4" >Pourquoi choisir Nobilis Web ?</h3>
@@ -27,7 +28,7 @@ const Work : React.FC<WorkProps> = ({  setSectionRef, sectionsRef}) => {
                         <p>Un accompagnement sur-mesure selon vos besoins.</p>
                     </li>
                         <li className='content-center m-3'>
-                        <CustomButton onClick={() => sectionsRef.current[4]?.scrollIntoView({ behavior: 'smooth' })} text={'Contactez-moi pour démarrer votre projet ! 🚀'} darkMode={false} />
+                        <CustomButton onClick={() => sectionsRef.current[4]?.scrollIntoView({ behavior: 'smooth' })} text={'Contactez-moi pour démarrer votre projet ! 🚀'} darkMode={darkMode} />
                     </li>
                 </ul>
                 <a href='https://cagueloup.fr/' rel="noopener noreferrer" >

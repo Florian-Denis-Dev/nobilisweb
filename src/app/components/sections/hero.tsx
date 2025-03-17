@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import CustomButton from '../CustomButton';
+import CustomButton from '../buttons/CustomButton';
 
 interface HeroProps {
   darkMode: boolean;
@@ -36,7 +36,7 @@ const Hero: React.FC<HeroProps> = ({ darkMode , setSectionRef, sectionsRef}) => 
                 </div>
               </div>
               <div className='replace xs:pt-4'>
-                <CustomButton onClick={() => sectionsRef.current[4]?.scrollIntoView({ behavior: 'smooth' })} text={'Discutons de votre projet 🚀'} darkMode={false} />
+                <CustomButton darkMode={darkMode} onClick={() => sectionsRef.current[4]?.scrollIntoView({ behavior: 'smooth' })} text={'Discutons de votre projet 🚀'} />
               </div>
             </div>
           </section>

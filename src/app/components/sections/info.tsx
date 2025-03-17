@@ -1,13 +1,14 @@
 import React from 'react';
 import Image from 'next/image';
-import LinkButton from '../LinkButton';
+import LinkButton from '../buttons/LinkButton';
 
 interface InfoProps {
   scrollToWork: () => void;
   setSectionRef: (index: number) => (el: HTMLElement | null) => void;
+  darkMode: boolean;
 }
 
-const Info: React.FC<InfoProps> = ({ scrollToWork , setSectionRef}) => {
+const Info: React.FC<InfoProps> = ({ scrollToWork , setSectionRef, darkMode}) => {
   return (
     <section ref={setSectionRef(1)} className="text-start max-w-5xl mx-auto min-h-screen flex flex-col md:flex-row items-center gap-8 justify-center">
       <div className='flex backdrop-blur-sm shadow-lg gap-4 p-5 m-10 rounded-xl'>
@@ -48,6 +49,7 @@ const Info: React.FC<InfoProps> = ({ scrollToWork , setSectionRef}) => {
                   iconClass='fab fa-linkedin'
                   ariaLabel='Linkedin'
                   text='LinkedIn'
+                  darkMode={darkMode}
                 />
 
                 <LinkButton
@@ -55,6 +57,7 @@ const Info: React.FC<InfoProps> = ({ scrollToWork , setSectionRef}) => {
                   iconClass='fab fa-github'
                   ariaLabel='GitHub'
                   text='GitHub'
+                  darkMode={darkMode}
                   />
            
                 <LinkButton
@@ -62,6 +65,7 @@ const Info: React.FC<InfoProps> = ({ scrollToWork , setSectionRef}) => {
                   iconClass='fab fa-instagram'
                   ariaLabel='Instagram'
                   text="Instagram"
+                  darkMode={darkMode}
                 />
               </div>
             </div>
