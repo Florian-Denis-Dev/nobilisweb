@@ -11,7 +11,7 @@ interface InfoProps {
 const Info: React.FC<InfoProps> = ({ scrollToWork , setSectionRef, darkMode}) => {
   return (
     <section ref={setSectionRef(1)} className="text-start max-w-5xl mx-auto min-h-screen flex flex-col md:flex-row items-center gap-8 justify-center">
-      <div className='flex backdrop-blur-sm shadow-lg gap-4 p-5 m-10 rounded-xl'>
+      <div className='flex backdrop-blur-sm shadow-lg gap-4 p-5 m-10 rounded-xl md:overflow-y-hidden md:h-auto xs:overflow-y-scroll xs:h-[70vh] '>
         <div className="max-w-3xl max-lg:w-auto">
           <article className='flex gap-4 pb-4 sm:flex-col xs:flex-col md:flex-row '>
             <Image
@@ -42,7 +42,7 @@ const Info: React.FC<InfoProps> = ({ scrollToWork , setSectionRef, darkMode}) =>
                 <a onClick={scrollToWork}>Découvrez mon dernier projet!</a><br />
                 et vous pouvez retrouver mon parcours sur ces liens:.
               </p>
-              <div className="icons flex gap-4">
+              <div className="icons flex gap-4 xs:gap-0 ">
                 
                 <LinkButton
                   href="https://www.linkedin.com/in/florian-d-a4ba7313b/"
