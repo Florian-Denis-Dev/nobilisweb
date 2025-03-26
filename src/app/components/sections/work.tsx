@@ -12,7 +12,7 @@ const Work : React.FC<WorkProps> = ({  setSectionRef, sectionsRef, darkMode}) =>
         <section ref={setSectionRef(2)} id="work" className="p-10 text-center min-h-screen flex flex-col justify-center items-center">
             <h3 className="text-3xl font-bold mb-4 xs:mb-0 " >Pourquoi choisir Nobilis Web ?</h3>
             <div className="grid grid-cols-1 gap-4">
-              <div className='md:overflow-y-hidden md:h-auto xs:overflow-y-scroll xs:h-[70vh] xs:flex-col-reverse flex xl:flex-row xl:gap-4 md:flex-col sm:flex-col gap-4 backdrop-blur-sm text-2xl p-4 rounded-lg shadow-md' >
+              <div className='xl:flex-row xl:gap-4 md:overflow-y-scroll md:h-[70vh] xs:overflow-y-scroll xs:h-[70vh] md:flex-col flex xs:flex-col-reverse sm:flex-col gap-4 backdrop-blur-sm text-2xl p-4 rounded-lg shadow-md' >
                 <ul className='text-start xl:w-96 md:w-auto text-xl flex flex-col gap-4 xl:justify-between'>
                     <h3 className='text-2xl font-semibold mb-6 '>Nos avantages:</h3>
                     <li className='flex xl:flex-col md:flex-row justify-between xs:flex-col gap-4'>
