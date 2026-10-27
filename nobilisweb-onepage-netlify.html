@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NobilisWeb — Visibilité web, SEO et automatisation pour entreprises</title>
+  <meta name="description" content="NobilisWeb aide les entreprises à gagner en visibilité et en temps : création de site, e-commerce, SEO, maintenance et automatisation. Basé en PACA, hébergement français." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#f4f4ef" />
+  <link rel="canonical" href="https://nobilisweb.com/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta property="og:title" content="NobilisWeb — Visibilité web, SEO et automatisation" />
+  <meta property="og:description" content="Sites, e-commerce, SEO, maintenance et automatisation pour entreprises françaises." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://nobilisweb.com/" />
+  <meta property="og:image" content="https://nobilisweb.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "NobilisWeb",
+    "url": "https://nobilisweb.com/",
+    "areaServed": "FR",
+    "address": { "@type": "PostalAddress", "addressRegion": "Provence-Alpes-Côte d'Azur", "addressCountry": "FR" },
+    "email": "contact@nobilisweb.com",
+    "description": "Création de sites, e-commerce, SEO, maintenance et automatisation."
+  }
+  </script>
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    /* Polices hébergées en local : déposer les .woff2 dans /fonts/ */
+    @font-face{font-family:'General Sans';src:url('/fonts/GeneralSans-Variable.woff2') format('woff2');font-weight:400 700;font-display:swap}
+    @font-face{font-family:'Boska';src:url('/fonts/Boska-Variable.woff2') format('woff2');font-weight:400 700;font-display:swap}
+
+    :root {
+      --color-bg:#f4f4ef; --color-surface:#fbfbf8; --color-surface-2:#e9e9e2;
+      --color-border:#d4d3cb; --color-divider:#d8d7cf;
+      --color-text:#171918; --color-text-muted:#454943; --color-text-faint:#62665f;
+      --color-primary:#1b2a4a; --color-primary-hover:#304a80;
+      --color-primary-highlight:#dfe7f3; --color-accent:#7da8f7;
+      --color-text-inverse:#f7f7f2;
+      --shadow-sm:0 12px 32px rgba(24,32,44,.055); --shadow-md:0 20px 48px rgba(24,32,44,.12);
+      --radius-sm:.5rem; --radius-xl:1.5rem;
+      --space-2:.5rem; --space-3:.75rem; --space-4:1rem; --space-5:1.25rem; --space-6:1.5rem;
+      --space-8:2rem; --space-10:2.5rem;
+      --text-xs:clamp(.75rem,.72rem + .2vw,.875rem);
+      --text-sm:clamp(.875rem,.84rem + .22vw,1rem);
+      --text-base:clamp(1rem,.97rem + .2vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + .7vw,1.55rem);
+      --text-xl:clamp(1.55rem,1.2rem + 1.6vw,2.6rem);
+      --text-2xl:clamp(2.4rem,1.35rem + 3.2vw,4.5rem);
+      --content:1200px; --header-h:84px;
+      --font-body:'General Sans',Inter,system-ui,sans-serif;
+      --font-display:'Boska',Georgia,serif;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px)}
+    body{font-family:var(--font-body);font-size:var(--text-base);line-height:1.6;background:var(--color-bg);color:var(--color-text)}
+    a{text-decoration:none;color:inherit}
+    img,svg{display:block;max-width:100%;height:auto}
+    button,input,textarea,select{font:inherit}
+    :focus-visible{outline:2px solid var(--color-primary-hover);outline-offset:3px}
+    .container{width:min(calc(100% - 2rem),var(--content));margin-inline:auto}
+    .skip-link{position:absolute;left:-9999px;top:0}
+    .skip-link:focus{left:1rem;top:1rem;padding:.75rem 1rem;background:var(--color-surface);border-radius:var(--radius-sm);z-index:1000}
+
+    .site-header{position:sticky;top:0;z-index:100;background:rgba(244,244,239,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(18,18,18,.08)}
+    .header-inner{min-height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.9rem;font-weight:600;letter-spacing:.02em;color:var(--color-primary)}
+    .logo-mark{width:44px;height:44px;padding:8px;border-radius:12px;border:1px solid rgba(18,18,18,.1);background:var(--color-surface)}
+    .header-right{display:flex;align-items:center;gap:1.5rem}
+    nav ul{display:flex;gap:.9rem 1.5rem;list-style:none;align-items:center}
+    nav a{font-size:var(--text-sm);color:var(--color-text-muted);position:relative}
+    nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:100%;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+    nav a:hover::after,nav a:focus-visible::after{transform:scaleX(1)}
+    .btn-header{min-height:42px;padding:.6rem 1.1rem}
+    .menu-toggle{display:none;width:44px;height:44px;border-radius:999px;border:1px solid rgba(18,18,18,.12);background:var(--color-surface);cursor:pointer}
+
+    section{padding-block:clamp(4rem,8vw,7rem);border-bottom:1px solid var(--color-divider)}
+    .eyebrow{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.18em;color:var(--color-text-faint);margin-bottom:var(--space-4)}
+    h1,h2,h3{line-height:1.1;text-wrap:balance}
+    h1{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:500;max-width:15ch;margin-bottom:var(--space-5)}
+    h1 em{font-style:normal;border-bottom:3px solid #5b8fe9}
+    h2{font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;margin-bottom:var(--space-4);position:relative;padding-bottom:.5rem}
+    h2::after{content:"";position:absolute;left:0;bottom:0;width:56px;height:3px;border-radius:2px;background:var(--color-accent)}
+    h3{font-size:var(--text-lg);font-weight:600;margin-bottom:.6rem}
+    p{color:var(--color-text-muted);max-width:70ch}
+    p + p{margin-top:var(--space-3)}
+
+    .hero-grid,.section-head,.offer-grid,.about-grid,.contact-grid{display:grid;gap:var(--space-8)}
+    .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(300px,.92fr);align-items:center;min-height:min(760px,calc(100svh - var(--header-h)));padding-block:clamp(3rem,6vw,5.5rem)}
+    #accueil{padding-block:0}
+    .hero-copy{padding-block:2rem}
+    .hero-panel{align-self:center}
+    .hero-copy p{font-size:clamp(1.05rem,1rem + .35vw,1.22rem);max-width:58ch}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;margin-top:var(--space-8)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.95rem 1.25rem;border-radius:999px;border:1px solid rgba(18,18,18,.12);font-size:var(--text-sm);font-weight:600;cursor:pointer;transition:background .2s ease,color .2s ease,transform .2s ease}
+    .btn-primary{background:var(--color-primary);color:var(--color-text-inverse)}
+    .btn-primary:hover{background:var(--color-primary-hover);transform:translateY(-1px)}
+    .btn-secondary{background:var(--color-surface);color:var(--color-text)}
+    .btn-secondary:hover{background:var(--color-surface-2)}
+    .btn[disabled]{opacity:.6;cursor:wait}
+
+    .hero-panel,.card,.about-card,.contact-card{background:var(--color-surface);border:1px solid rgba(18,18,18,.09);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm)}
+    .hero-panel{padding:var(--space-8);display:grid;gap:var(--space-5)}
+    .metric{padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)}
+    .metric:last-child{padding-bottom:0;border-bottom:none}
+    .metric strong{display:block;font-size:clamp(1.3rem,1.2rem + .8vw,1.9rem);margin:.2rem 0 .4rem;letter-spacing:-.02em}
+
+    .section-head{grid-template-columns:minmax(0,1.1fr) minmax(260px,.9fr);align-items:end;margin-bottom:var(--space-10)}
+    .section-head > p{justify-self:end;max-width:48ch}
+    .offer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card,.about-card,.contact-card{padding:clamp(1.4rem,2.5vw,2rem);border-left:3px solid var(--color-primary);transition:border-color .2s ease,transform .2s ease,box-shadow .2s ease}
+    .card:hover,.about-card:hover{border-left-color:var(--color-accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+    .tag-soon{display:inline-block;margin-left:.5rem;padding:.15rem .6rem;border-radius:999px;background:var(--color-primary-highlight);font-size:var(--text-xs);font-weight:500;vertical-align:middle}
+    .tools{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:var(--space-6)}
+    .chip{padding:.55rem .9rem;border-radius:999px;background:var(--color-primary-highlight);font-size:var(--text-sm)}
+
+    .marquee-shell{overflow-x:auto;padding:.4rem .15rem 1rem;border:0;border-radius:0;background:transparent;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#b7bdc8 transparent}
+    .marquee-track{display:grid;grid-template-columns:repeat(4,minmax(250px,1fr));gap:1rem;width:max-content;min-width:100%;animation:none}
+    .marquee-group{display:contents}
+    .project-card{width:min(300px,72vw);min-height:100%;padding:1.2rem;border-radius:1.1rem;background:var(--color-surface);border:1px solid rgba(18,18,18,.09);scroll-snap-align:start;box-shadow:var(--shadow-sm)}
+    .project-preview{height:145px;margin:-.2rem -.2rem 1.1rem;padding:12px;border-radius:.75rem;background:#e3e7ed;overflow:hidden;position:relative}
+    .preview-window{height:100%;padding:8px;border-radius:6px;background:#fbfbf8;box-shadow:0 5px 14px rgba(20,30,50,.09)}
+    .preview-bar{height:7px;width:42%;border-radius:99px;background:#d6dce5;margin-bottom:10px}
+    .preview-block{height:48px;border-radius:4px;background:#dce5f1;margin-bottom:7px}
+    .preview-lines{height:5px;width:78%;border-radius:99px;background:#d6d8d3;margin:5px 0}
+    .project-card:nth-child(2) .project-preview{background:#e9e1d7}
+    .project-card:nth-child(2) .preview-block{background:#243a5e}
+    .project-card:nth-child(3) .project-preview{background:#e4e8df}
+    .project-card:nth-child(3) .preview-block{background:#b7c7a8}
+    .project-card:nth-child(4) .project-preview{background:#eee2dc}
+    .project-card:nth-child(4) .preview-block{background:#a95d49}
+    .project-card{transition:transform .2s ease,box-shadow .2s ease}
+    .project-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+    .project-badge{display:inline-flex;margin-bottom:.65rem;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.12em;color:var(--color-text-faint)}
+    .project-card h3{font-size:var(--text-base)}
+    .project-card p{font-size:var(--text-sm)}
+
+    .about-grid{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr 1fr;align-items:start}
+    .contact-list{list-style:none;display:grid;gap:.95rem;margin-top:var(--space-5)}
+    .contact-list a{text-decoration:underline;text-underline-offset:3px}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)}
+    .field-grid + .field-grid,.field-grid + label,label + label,label + .consent{margin-top:var(--space-4)}
+    label{display:grid;gap:.5rem;color:var(--color-text);font-size:var(--text-sm)}
+    input,textarea,select{width:100%;padding:1rem;border-radius:1rem;border:1px solid rgba(18,18,18,.18);background:var(--color-bg);color:var(--color-text);transition:border-color .2s ease}
+    input:focus,textarea:focus,select:focus{outline:none;border-color:var(--color-primary-hover);box-shadow:0 0 0 3px rgba(125,168,247,.22)}
+    textarea{min-height:160px;resize:vertical}
+    .consent{display:flex;gap:.7rem;align-items:flex-start;font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-4)}
+    .consent input{width:auto;margin-top:.2rem}
+    .consent a{text-decoration:underline}
+    .form-actions{margin-top:var(--space-5)}
+    .form-status{margin-top:var(--space-4);font-size:var(--text-sm);min-height:1.5em}
+    .form-status.ok{color:#1c6b3a}.form-status.err{color:#a12a2a}
+    .hp{position:absolute;left:-9999px;opacity:0}
+
+    footer{padding:var(--space-8) 0 3rem}
+    .footer-inner{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:var(--color-text-faint);font-size:var(--text-sm)}
+    .footer-inner a{text-decoration:underline;text-underline-offset:3px}
+
+    .js .fade-up{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+    .js .fade-up.is-visible{opacity:1;transform:none}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    @media (max-width:1100px){
+      :root{--header-h:76px}
+      .container{width:min(calc(100% - 2.5rem),var(--content))}
+      .hero-grid{grid-template-columns:minmax(0,1fr) minmax(270px,.82fr);gap:1.5rem}
+      h1{font-size:clamp(2.8rem,5.2vw,4.1rem)}
+      .section-head{grid-template-columns:1fr;gap:1rem}
+      .section-head > p{justify-self:start;max-width:65ch}
+      .about-grid,.contact-grid{grid-template-columns:1fr}
+      .contact-grid{gap:1.25rem}
+      .marquee-track{grid-template-columns:repeat(4,minmax(260px,1fr))}
+    }
+    @media (max-width:900px){
+      .header-inner{gap:.75rem}
+      .header-right{gap:.85rem}
+      nav ul{gap:.75rem 1rem}
+      nav a{font-size:.9rem}
+      .hero-grid{grid-template-columns:1fr;min-height:auto;padding-block:3.5rem}
+      .hero-copy{padding-block:0}
+      .hero-panel{grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;padding:1.25rem}
+      .metric{padding:0 1rem 0 0;border-bottom:0;border-right:1px solid var(--color-divider)}
+      .metric:last-child{padding:0;border-right:0}
+      .metric strong{font-size:1.15rem}
+      .metric p{font-size:.92rem}
+      .offer-grid{gap:1rem}
+      section{padding-block:4.5rem}
+    }
+    @media (max-width:700px){
+      :root{--header-h:68px}
+      .container{width:min(calc(100% - 2rem),var(--content))}
+      .menu-toggle{display:inline-flex;align-items:center;justify-content:center}
+      .header-right{gap:.65rem}
+      nav{display:none;position:absolute;top:calc(100% + .5rem);left:0;right:0;padding:1rem;background:var(--color-surface);border-radius:1rem;border:1px solid rgba(18,18,18,.1);box-shadow:var(--shadow-md)}
+      nav.open{display:block}
+      nav ul{flex-direction:column;align-items:stretch;gap:.2rem}
+      nav a{display:block;padding:.7rem .4rem;font-size:1rem}
+      nav a::after{display:none}
+      .btn-header{display:none}
+      .hero-grid{padding-block:3rem}
+      h1{font-size:clamp(2.65rem,11vw,4rem);max-width:13ch}
+      .hero-actions{flex-direction:column;align-items:stretch;gap:.7rem;margin-top:1.5rem}
+      .hero-actions .btn{width:100%}
+      .hero-panel{grid-template-columns:1fr;padding:1.25rem;gap:1rem}
+      .metric,.metric:last-child{padding:0 0 1rem;border-right:0;border-bottom:1px solid var(--color-divider)}
+      .metric:last-child{padding-bottom:0;border-bottom:0}
+      .offer-grid,.field-grid,.about-grid,.contact-grid{grid-template-columns:1fr}
+      .card,.about-card,.contact-card{padding:1.35rem;border-radius:1.2rem}
+      .section-head{margin-bottom:2rem}
+      section{padding-block:3.5rem}
+      .marquee-track{grid-template-columns:repeat(4,minmax(78vw,1fr))}
+      .project-preview{height:130px}
+      .tools{gap:.5rem}
+      .chip{font-size:.85rem;padding:.45rem .7rem}
+      .footer-inner{flex-direction:column}
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .marquee-track{animation:none}
+      .js .fade-up{opacity:1;transform:none;transition:none}
+      *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Aller au contenu</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#accueil" aria-label="NobilisWeb, retour en haut">
+        <svg class="logo-mark" viewBox="0 0 48 48" aria-hidden="true" fill="none">
+          <path d="M11 36V12l13 15 13-15v24" stroke="currentColor" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17 36h14" stroke="currentColor" stroke-width="3.3" stroke-linecap="round"/>
+        </svg>
+        <span>NobilisWeb</span>
+      </a>
+      <div class="header-right">
+        <nav id="site-nav" aria-label="Navigation principale">
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#realisations">Réalisations</a></li>
+            <li><a href="#apropos">À propos</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn-primary btn-header" href="#devis">Devis</a>
+        <button class="menu-toggle" type="button" data-menu-toggle aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="site-nav">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="accueil">
+      <div class="container hero-grid">
+        <div class="hero-copy fade-up">
+          <div class="eyebrow">Création web • SEO • Automatisation</div>
+          <h1>Un site qui vous apporte des <em>clients</em>, pas seulement des visites.</h1>
+          <p>NobilisWeb accompagne les entreprises et e-commerçants qui veulent mieux vendre grâce au web : présence visuelle forte, offre lisible, référencement solide et outils qui font gagner du temps.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#devis">Demander un devis</a>
+            <a class="btn btn-secondary" href="#realisations">Voir les réalisations</a>
+          </div>
+        </div>
+        <aside class="hero-panel fade-up" aria-label="Points clés">
+          <div class="metric">
+            <span class="eyebrow">Positionnement</span>
+            <strong>Web utile et concret</strong>
+            <p>Création, refonte, maintenance, SEO et automatisation, avec une logique orientée résultats.</p>
+          </div>
+          <div class="metric">
+            <span class="eyebrow">Données</span>
+            <strong>Hébergement français</strong>
+            <p>Solutions françaises (o2switch, OVH), meilleure maîtrise des données et RGPD intégré dès le départ.</p>
+          </div>
+          <div class="metric">
+            <span class="eyebrow">Objectif</span>
+            <strong>Gagner du temps, vendre plus</strong>
+            <p>Réduire les freins techniques et les tâches administratives répétitives.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Services</div>
+            <h2>Ce que je peux faire pour votre activité.</h2>
+          </div>
+          <p>De la création de site à l'automatisation, chaque mission part de votre besoin réel : être plus visible, mieux vendre et moins vous disperser.</p>
+        </div>
+        <div class="offer-grid">
+          <article class="card fade-up">
+            <h3>Site et e-commerce</h3>
+            <p>Création ou refonte de site (WordPress, WooCommerce, React/Next.js), identité visuelle et base solide pour vendre en ligne.</p>
+          </article>
+          <article class="card fade-up">
+            <h3>SEO et maintenance</h3>
+            <p>Optimisation technique et éditoriale, données structurées, suivi Analytics, mises à jour et sécurité pour un site qui reste performant.</p>
+          </article>
+          <article class="card fade-up">
+            <h3>Automatisation</h3>
+            <p>Scripts, API et workflows (Odoo, WooCommerce…) pour supprimer les tâches répétitives et fluidifier votre quotidien.</p>
+          </article>
+          <article class="card fade-up">
+            <h3>Assistants IA <span class="tag-soon">Bientôt</span></h3>
+            <p>Outils d'aide au tri des demandes et aux réponses simples. Service en préparation : contactez-moi pour en discuter.</p>
+          </article>
+        </div>
+        <div class="tools fade-up" aria-label="Outils utilisés">
+          <span class="chip">WordPress</span>
+          <span class="chip">WooCommerce</span>
+          <span class="chip">Odoo</span>
+          <span class="chip">React / Next.js</span>
+          <span class="chip">Python</span>
+          <span class="chip">Google Analytics</span>
+          <span class="chip">Tag Manager</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="realisations">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Réalisations</div>
+            <h2>Des interventions différentes, un même objectif : plus de visibilité.</h2>
+          </div>
+          <p>Quelques projets récents, de la refonte e-commerce à l'identité visuelle.</p>
+        </div>
+        <div class="marquee-shell fade-up" role="region" aria-label="Réalisations NobilisWeb" tabindex="0">
+          <div class="marquee-track">
+            <div class="marquee-group">
+              <article class="project-card">
+                <div class="project-preview" aria-hidden="true"><div class="preview-window"><div class="preview-bar"></div><div class="preview-block"></div><div class="preview-lines"></div><div class="preview-lines"></div></div></div>
+                <span class="project-badge">Fixon • E-commerce</span>
+                <h3>Restructuration e-commerce</h3>
+                <p>Reprise des fiches produits, SEO, refonte graphique et changement d'hébergement.</p>
+              </article>
+              <article class="project-card">
+                <div class="project-preview" aria-hidden="true"><div class="preview-window"><div class="preview-bar"></div><div class="preview-block"></div><div class="preview-lines"></div><div class="preview-lines"></div></div></div>
+                <span class="project-badge">Cagueloup • Site + boutique</span>
+                <h3>Nouveau site React + e-commerce</h3>
+                <p>Site neuf en React avec intégration e-commerce, plus moderne et plus flexible.</p>
+              </article>
+              <article class="project-card">
+                <div class="project-preview" aria-hidden="true"><div class="preview-window"><div class="preview-bar"></div><div class="preview-block"></div><div class="preview-lines"></div><div class="preview-lines"></div></div></div>
+                <span class="project-badge">Laucreart • Microentreprise</span>
+                <h3>Présence en ligne WordPress</h3>
+                <p>Site WordPress clair, simple à gérer et cohérent avec l'activité.</p>
+              </article>
+              <article class="project-card">
+                <div class="project-preview" aria-hidden="true"><div class="preview-window"><div class="preview-bar"></div><div class="preview-block"></div><div class="preview-lines"></div><div class="preview-lines"></div></div></div>
+                <span class="project-badge">Patisse&amp;Cantine • Boulangerie</span>
+                <h3>Logo pour boulangerie pâtisserie</h3>
+                <p>Nouveau logo pour améliorer la lisibilité de l'identité et la présence locale.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="apropos">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">À propos</div>
+            <h2>Aider les entreprises à mieux vendre grâce au web.</h2>
+          </div>
+          <p>Basé en Provence-Alpes-Côte d'Azur, j'interviens auprès d'entreprises et de e-commerçants, en France, à distance ou sur place.</p>
+        </div>
+        <div class="about-grid">
+          <article class="about-card fade-up">
+            <!-- Ajouter ici une photo : <img src="/img/portrait.jpg" alt="Portrait du fondateur de NobilisWeb" width="160" height="160"> -->
+            <h3>Qui je suis</h3>
+            <p>Je développe NobilisWeb avec une approche simple : utiliser le web comme un levier concret pour soutenir une activité réelle. L'objectif n'est pas seulement d'avoir un site, mais un support visible, crédible et exploitable.</p>
+            <p>Quand une entreprise gagne en lisibilité, en temps et en efficacité, elle améliore aussi ses ventes et sa marge de manœuvre.</p>
+          </article>
+          <article class="about-card fade-up">
+            <h3>Ma façon de travailler</h3>
+            <p>Je privilégie des solutions françaises : meilleure maîtrise des données, respect des lois locales et RGPD pris comme base sérieuse.</p>
+            <p>Je travaille par étapes : d'abord une présence web solide, puis l'optimisation et l'automatisation, et à terme des assistants IA pour soulager les tâches administratives.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <article class="contact-card fade-up">
+          <div class="eyebrow">Contact / devis</div>
+          <h2>Parlons de votre projet.</h2>
+          <p>Décrivez votre besoin via le formulaire ou écrivez-moi directement. Réponse sous 24 h ouvrées.</p>
+          <ul class="contact-list">
+            <li><strong>Email :</strong> <a href="mailto:contact@nobilisweb.com">contact@nobilisweb.com</a></li>
+            <li><strong>Zone :</strong> PACA et toute la France, à distance</li>
+            <!-- <li><strong>LinkedIn :</strong> <a href="https://www.linkedin.com/in/VOTRE-PROFIL" rel="noopener">Mon profil</a></li> -->
+          </ul>
+        </article>
+        <form id="devis" name="contact" class="contact-card fade-up" data-contact-form data-netlify="true" netlify-honeypot="bot-field" method="POST" novalidate>
+          <div class="field-grid">
+            <label>Nom
+              <input type="text" name="nom" placeholder="Votre nom" autocomplete="name" required />
+            </label>
+            <label>Société
+              <input type="text" name="societe" placeholder="Nom de votre entreprise" autocomplete="organization" />
+            </label>
+          </div>
+          <div class="field-grid">
+            <label>Email
+              <input type="email" name="email" placeholder="vous@entreprise.fr" autocomplete="email" required />
+            </label>
+            <label>Type de besoin
+              <select name="type" required>
+                <option value="" disabled selected>Choisir…</option>
+                <option value="creation">Création de site</option>
+                <option value="refonte">Refonte</option>
+                <option value="maintenance-seo">Maintenance / SEO</option>
+                <option value="automatisation">Automatisation</option>
+                <option value="assistant-ia">Assistant IA</option>
+              </select>
+            </label>
+          </div>
+          <label>Message
+            <textarea name="message" placeholder="Décrivez votre besoin, vos objectifs et les freins actuels de votre activité." required></textarea>
+          </label>
+          <input type="hidden" name="form-name" value="contact" />
+          <input class="hp" type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <label class="consent">
+            <input type="checkbox" name="consent" required />
+            <span>J'accepte que mes données soient utilisées pour répondre à ma demande. Voir la <a href="/confidentialite">politique de confidentialité</a>.</span>
+          </label>
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Envoyer la demande</button>
+          </div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> NobilisWeb — SIRET : 848 409 165 00034</span>
+      <span><a href="/mentions-legales">Mentions légales</a> · <a href="/confidentialite">Confidentialité</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('[data-menu-toggle]');
+    const nav = document.getElementById('site-nav');
+    if (menuToggle && nav) {
+      const setMenu = (open) => {
+        nav.classList.toggle('open', open);
+        menuToggle.setAttribute('aria-expanded', String(open));
+      };
+      menuToggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+      nav.querySelectorAll('a').forEach(l => l.addEventListener('click', () => setMenu(false)));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+    }
+
+    const fadeEls = document.querySelectorAll('.fade-up');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+        });
+      }, { threshold: .12 });
+      fadeEls.forEach(el => { el.dataset.revealObserved = 'true'; observer.observe(el); });
+    } else {
+      fadeEls.forEach(el => el.classList.add('is-visible'));
+    }
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const form = document.querySelector('[data-contact-form]');
+    if (form) {
+      const status = form.querySelector('.form-status');
+      const btn = form.querySelector('button[type="submit"]');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.className = 'form-status';
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        btn.disabled = true;
+        status.textContent = 'Envoi en cours…';
+        try {
+          const res = await fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+            body: new URLSearchParams(new FormData(form)).toString()
+          });
+          if (!res.ok) throw new Error();
+          form.reset();
+          status.classList.add('ok');
+          status.textContent = 'Merci, votre demande est bien envoyée. Réponse sous 24 h ouvrées.';
+        } catch {
+          status.classList.add('err');
+          status.textContent = 'Envoi impossible. Écrivez-moi directement à contact@nobilisweb.com.';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    }
+  
+    // Ancres internes : défilement fiable même dans un aperçu (iframe, blob, srcdoc)
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        const target = id ? document.getElementById(id) : null;
+        if (!target) return;
+        e.preventDefault();
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 84;
+        const gap = id === 'devis' ? 24 : 0;
+        const top = target.getBoundingClientRect().top + window.scrollY - (id === 'accueil' ? 0 : headerH + gap);
+        window.scrollTo({ top: Math.max(top, 0), behavior: reduce ? 'auto' : 'smooth' });
+        try { history.replaceState(null, '', '#' + id); } catch (_) {}
+        if (id === 'devis') {
+          const first = target.querySelector('input[name="nom"]');
+          if (first) setTimeout(() => first.focus({ preventScroll: true }), reduce ? 0 : 500);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
